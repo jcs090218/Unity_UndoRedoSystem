@@ -4,17 +4,19 @@ Undo Redo system implementation in Unity uGUI system. <br/><br/>
 
 ## API ##
 ```
-// Call undo for whole program.
-GetComponent<JCS_UndoRedoSystem>().UndoComponent();
+/* For undo/redo system. */
+{
+    GetComponent<JCS_UndoRedoSystem>().UndoComponent();
 
-// Call redo for whole program.
-GetComponent<JCS_UndoRedoSystem>().RedoComponent();
+    GetComponent<JCS_UndoRedoSystem>().RedoComponent();
+}
 
-// Call undo for just one single component.
-GetComponent<JCS_UndoRedoComponent>().Undo();
+/* For single undo/redo component. */
+{
+    GetComponent<JCS_UndoRedoComponent>().Undo();
 
-// Call redo for just one single component.
-GetComponent<JCS_UndoRedoComponent>().Redo();
+    GetComponent<JCS_UndoRedoComponent>().Redo();
+}
 ```
 
 ## Screenshot ##
