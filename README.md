@@ -18,7 +18,7 @@ GetComponent<JCS_UndoRedoComponent>().Redo();
 ```
 
 ## Screenshot ##
-<img src="./screenshot/toggle_demo.gif"/>
+<img src="./screenshot/undo_redo_demo.gif"/>
 
 ## 3rd Party Source ##
 * JCSUnity : https://github.com/jcs090218/JCSUnity by <a href="https://github.com/jcs090218">Jen-Chieh Shen</a>
