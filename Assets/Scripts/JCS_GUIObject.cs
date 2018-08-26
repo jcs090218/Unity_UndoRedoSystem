@@ -47,10 +47,6 @@ namespace JCSUnity
         [SerializeField]
         protected Toggle mToggle = null;
 
-        [Tooltip("JCS_Toggle component.")]
-        [SerializeField]
-        protected JCS_Toggle mJCSToggle = null;
-
         [Tooltip("Dropdown component.")]
         [SerializeField]
         protected Dropdown mDropdown = null;
@@ -73,7 +69,6 @@ namespace JCSUnity
         public InputField inputField { get { return this.mInputField; } }
         public Slider slider { get { return this.mSlider; } }
         public Toggle toggle { get { return this.mToggle; } }
-        public JCS_Toggle jcsToggle { get { return this.mJCSToggle; } }
         public Dropdown dropdown { get { return this.mDropdown; } }
         public Scrollbar scrollbar { get { return this.mScrollBar; } }
 
@@ -125,7 +120,6 @@ namespace JCSUnity
                 case JCS_GUIType.TOGGLE:
                     {
                         this.mToggle = this.GetComponent<Toggle>();
-                        this.mJCSToggle = this.GetComponent<JCS_Toggle>();
                     }
                     break;
             }

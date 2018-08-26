@@ -82,10 +82,10 @@ namespace JCSUnity
             if (!mTestWithKey)
                 return;
 
-            if (JCS_Input.GetKeyDown(mUndoKey))
+            if (Input.GetKeyDown(mUndoKey))
                 UndoComponent();
 
-            if (JCS_Input.GetKeyDown(mRedoKey))
+            if (Input.GetKeyDown(mRedoKey))
                 RedoComponent();
         }
 #endif
@@ -160,11 +160,6 @@ namespace JCSUnity
         public void ClearRedoComp()
         {
             mRedoComp.Clear();
-
-            foreach (JCS_UndoRedoComponent comp in mAllUndoRedoComp)
-            {
-                comp.ClearAllRedo();
-            }
         }
 
         //----------------------

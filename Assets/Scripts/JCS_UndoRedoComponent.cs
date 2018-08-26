@@ -151,10 +151,6 @@ namespace JCSUnity
         /*******************************************/
         private void Start()
         {
-            // Use the universal one if not filled.
-            if (mUndoRedoSystem == null)
-                this.mUndoRedoSystem = JCS_UIManager.instance.GetGlobalUndoRedoSystem();
-
             // Add to get manage by the system.
             this.mUndoRedoSystem.AddUndoRedoComponentToSystem(this);
 
@@ -176,10 +172,10 @@ namespace JCSUnity
             if (!mTestWithKey)
                 return;
 
-            if (JCS_Input.GetKeyDown(mUndoKey))
+            if (Input.GetKeyDown(mUndoKey))
                 Undo();
 
-            if (JCS_Input.GetKeyDown(mRedoKey))
+            if (Input.GetKeyDown(mRedoKey))
                 Redo();
         }
 #endif
@@ -449,22 +445,10 @@ namespace JCSUnity
 
                 case JCS_GUIType.TOGGLE:
                     {
-                        if (mToggle != null)
+                        mToggle.onValueChanged.AddListener(delegate
                         {
-                            mToggle.onValueChanged.AddListener(delegate
-                            {
-                                RecordOnce();
-                            });
-                        }
-                        else if (mJCSToggle != null)
-                        {
-                            mJCSToggle.onValueChanged += RecordOnce;
-                        }
-                        else
-                        {
-                            JCS_Debug.LogError("Cannot record toggle object " +
-                                "without any toggle object component attached..");
-                        }
+                            RecordOnce();
+                        });
                     }
                     break;
             }
@@ -479,6 +463,7 @@ namespace JCSUnity
                 return;
 
             mUndoRedoSystem.ClearRedoComp();
+            ClearAllRedo();
 
             switch (mGUIType)
             {
@@ -551,17 +536,10 @@ namespace JCSUnity
                         mTog_Undo.Add(mPrevToggleData);
 
 
-                        JCS_ToggleData td = new JCS_ToggleData();
-
-                        if (mToggle != null)
-                            td.isOn = mToggle.isOn;
-                        else if (mJCSToggle != null)
-                            td.isOn = mJCSToggle.IsOn;
-                        else
+                        JCS_ToggleData td = new JCS_ToggleData
                         {
-                            JCS_Debug.LogError("Cannot record toggle object " +
-                                "without any toggle object component attached..");
-                        }
+                            isOn = mToggle.isOn
+                        };
 
                         mPrevToggleData = td;
 
@@ -611,10 +589,7 @@ namespace JCSUnity
         /// <param name="td"></param>
         private void PasteData(JCS_ToggleData td)
         {
-            if (mToggle != null)
-                mToggle.isOn = td.isOn;
-            else if (mJCSToggle != null)
-                mJCSToggle.IsOn = td.isOn;
+            mToggle.isOn = td.isOn;
         }
 
         /// <summary>
@@ -675,12 +650,7 @@ namespace JCSUnity
         /// </returns>
         private bool CheckSameData(JCS_ToggleData td)
         {
-            if (mToggle != null)
-                return (mToggle.isOn == td.isOn);
-            else if (mJCSToggle != null)
-                return (mJCSToggle.IsOn == td.isOn);
-
-            return false;
+            return (mToggle.isOn == td.isOn);
         }
 
         /// <summary>
@@ -728,16 +698,9 @@ namespace JCSUnity
 
                 case JCS_GUIType.TOGGLE:
                     {
-                        bool tmpIsOn = false;
-
-                        if (mToggle != null)
-                            tmpIsOn = mToggle.isOn;
-                        else if (mJCSToggle != null)
-                            tmpIsOn = mJCSToggle.IsOn;
-
                         mPrevToggleData = new JCS_ToggleData
                         {
-                            isOn = tmpIsOn
+                            isOn = mToggle.isOn
                         };
                     }
                     break;
