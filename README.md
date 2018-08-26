@@ -20,7 +20,7 @@ Undo Redo system implementation in Unity uGUI system. <br/><br/>
 ```
 
 ## Screenshot ##
-<img src="./screenshot/undo_redo_demo.gif"/>
+<img src="./screenshot/undo_redo_demo2.gif"/>
 
 ## 3rd Party Source ##
 * JCSUnity : https://github.com/jcs090218/JCSUnity by <a href="https://github.com/jcs090218">Jen-Chieh Shen</a>
