@@ -82,11 +82,15 @@ namespace JCSUnity
             if (!mTestWithKey)
                 return;
 
-            if (Input.GetKeyDown(mUndoKey))
-                UndoComponent();
+            if (Input.GetKey(KeyCode.RightAlt) ||
+                Input.GetKey(KeyCode.LeftAlt))
+            {
+                if (Input.GetKeyDown(mUndoKey))
+                    UndoComponent();
 
-            if (Input.GetKeyDown(mRedoKey))
-                RedoComponent();
+                if (Input.GetKeyDown(mRedoKey))
+                    RedoComponent();
+            }
         }
 #endif
 
