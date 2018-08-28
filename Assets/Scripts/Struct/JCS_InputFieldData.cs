@@ -18,6 +18,7 @@ namespace JCSUnity
     /// </summary>
     [System.Serializable]
     public class JCS_InputFieldData
+        : JCS_UIComponentData
     {
         public string text = "";
     }

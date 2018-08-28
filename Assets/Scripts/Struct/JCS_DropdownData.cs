@@ -18,6 +18,7 @@ namespace JCSUnity
     /// </summary>
     [System.Serializable]
     public class JCS_DropdownData
+        : JCS_UIComponentData
     {
         public int value = 0;
     }

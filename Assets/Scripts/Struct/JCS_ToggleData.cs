@@ -18,6 +18,7 @@ namespace JCSUnity
     /// </summary>
     [System.Serializable]
     public class JCS_ToggleData
+        : JCS_UIComponentData
     {
         public bool isOn = false;
     }

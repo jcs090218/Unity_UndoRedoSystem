@@ -18,6 +18,7 @@ namespace JCSUnity
     /// </summary>
     [System.Serializable]
     public class JCS_ScrollbarData
+        : JCS_UIComponentData
     {
         public float value = 0.0f;
     }
