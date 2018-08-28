@@ -149,15 +149,23 @@ namespace JCSUnity
         /*******************************************/
         /*            Unity's function             */
         /*******************************************/
+        protected override void Awake()
+        {
+            base.Awake();
+
+            // Register it, note we need to register as soon as possible 
+            // so we don't miss any default setting record by the script.
+            RegisterUndoEvent();
+        }
+
         private void Start()
         {
             // Add to get manage by the system.
             this.mUndoRedoSystem.AddUndoRedoComponentToSystem(this);
 
-            // Register it.
-            RegisterUndoEvent();
-
-            // Record down the previous data.
+            // Record down the previous data. This we try 
+            // to be as late as possible. Cuz any script change 
+            // the UI value after this will not be record...
             RecordPrevData();
         }
 
@@ -392,6 +400,89 @@ namespace JCSUnity
             mSli_Redo.Clear();
             mSB_Redo.Clear();
             mTog_Redo.Clear();
+        }
+
+        /// <summary>
+        /// Record down the previous data before we do 
+        /// undo/redo action.
+        /// </summary>
+        public void RecordPrevData()
+        {
+            switch (mGUIType)
+            {
+                case JCS_GUIType.INPUT_FIELD:
+                    {
+                        mPrevInputFieldData = new JCS_InputFieldData
+                        {
+                            text = mInputField.text
+                        };
+                    }
+                    break;
+
+                case JCS_GUIType.DROP_DOWN:
+                    {
+                        mPrevDropdownData = new JCS_DropdownData
+                        {
+                            value = mDropdown.value
+                        };
+                    }
+                    break;
+
+                case JCS_GUIType.SLIDER:
+                    {
+                        mPrevSliderData = new JCS_SliderData
+                        {
+                            value = mSlider.value
+                        };
+                    }
+                    break;
+
+                case JCS_GUIType.SCROLL_BAR:
+                    {
+                        mPrevScrollbarData = new JCS_ScrollbarData
+                        {
+                            value = mScrollBar.value
+                        };
+                    }
+                    break;
+
+                case JCS_GUIType.TOGGLE:
+                    {
+                        mPrevToggleData = new JCS_ToggleData
+                        {
+                            isOn = mToggle.isOn
+                        };
+                    }
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// Stop recording undo/redo.
+        /// </summary>
+        public void StopRecording()
+        {
+            this.mIgnoreRecord = true;
+        }
+
+        /// <summary>
+        /// Start recording undo/redo.
+        /// </summary>
+        public void StartRecording()
+        {
+            this.mIgnoreRecord = false;
+        }
+
+        /// <summary>
+        /// Is current component recording undo/redo action?
+        /// </summary>
+        /// <returns>
+        /// true, is recording.
+        /// false, not recording.
+        /// </returns>
+        public bool IsRecording()
+        {
+            return (!this.mIgnoreRecord);
         }
 
         //----------------------
@@ -651,60 +742,6 @@ namespace JCSUnity
         private bool CheckSameData(JCS_ToggleData td)
         {
             return (mToggle.isOn == td.isOn);
-        }
-
-        /// <summary>
-        /// Record down the previous data.
-        /// </summary>
-        private void RecordPrevData()
-        {
-            switch (mGUIType)
-            {
-                case JCS_GUIType.INPUT_FIELD:
-                    {
-                        mPrevInputFieldData = new JCS_InputFieldData
-                        {
-                            text = mInputField.text
-                        };
-                    }
-                    break;
-
-                case JCS_GUIType.DROP_DOWN:
-                    {
-                        mPrevDropdownData = new JCS_DropdownData
-                        {
-                            value = mDropdown.value
-                        }; 
-                    }
-                    break;
-
-                case JCS_GUIType.SLIDER:
-                    {
-                        mPrevSliderData = new JCS_SliderData
-                        {
-                            value = mSlider.value
-                        };
-                    }
-                    break;
-
-                case JCS_GUIType.SCROLL_BAR:
-                    {
-                        mPrevScrollbarData = new JCS_ScrollbarData
-                        {
-                            value = mScrollBar.value
-                        };
-                    }
-                    break;
-
-                case JCS_GUIType.TOGGLE:
-                    {
-                        mPrevToggleData = new JCS_ToggleData
-                        {
-                            isOn = mToggle.isOn
-                        };
-                    }
-                    break;
-            }
         }
     }
 }

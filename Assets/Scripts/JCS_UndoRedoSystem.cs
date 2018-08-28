@@ -162,6 +162,61 @@ namespace JCSUnity
             mRedoComp.Clear();
         }
 
+        /// <summary>
+        /// Record down the previous data before we do 
+        /// undo/redo action.
+        /// </summary>
+        public void RecordPrevData()
+        {
+            for (int index = 0;
+                index < mAllUndoRedoComp.Count;
+                ++index)
+            {
+                JCS_UndoRedoComponent comp = mAllUndoRedoComp[index];
+
+                if (comp == null)
+                    continue;
+
+                comp.RecordPrevData();
+            }
+        }
+
+        /// <summary>
+        /// Stop recording undo/redo.
+        /// </summary>
+        public void StopRecording()
+        {
+            for (int index = 0;
+                index < mAllUndoRedoComp.Count;
+                ++index)
+            {
+                JCS_UndoRedoComponent comp = mAllUndoRedoComp[index];
+
+                if (comp == null)
+                    continue;
+
+                comp.StopRecording();
+            }
+        }
+
+        /// <summary>
+        /// Start recording undo/redo
+        /// </summary>
+        public void StartRecording()
+        {
+            for (int index = 0;
+                index < mAllUndoRedoComp.Count;
+                ++index)
+            {
+                JCS_UndoRedoComponent comp = mAllUndoRedoComp[index];
+
+                if (comp == null)
+                    continue;
+
+                comp.StartRecording();
+            }
+        }
+
         //----------------------
         // Protected Functions
 
