@@ -415,7 +415,19 @@ namespace JCSUnity
         }
 
         /// <summary>
-        /// Clear all the redo list.
+        /// Clear all undo history.
+        /// </summary>
+        public void ClearAllUndo()
+        {
+            mDD_Undo.Clear();
+            mIF_Undo.Clear();
+            mSli_Undo.Clear();
+            mSB_Undo.Clear();
+            mTog_Undo.Clear();
+        }
+
+        /// <summary>
+        /// Clear all the redo history.
         /// </summary>
         public void ClearAllRedo()
         {
@@ -425,6 +437,16 @@ namespace JCSUnity
             mSB_Redo.Clear();
             mTog_Redo.Clear();
         }
+
+        /// <summary>
+        /// Clear all undo and redo history.
+        /// </summary>
+        public void ClearAllUndoRedoHistory()
+        {
+            ClearAllUndo();
+            ClearAllRedo();
+        }
+
 
         /// <summary>
         /// Record down the previous data before we do 
