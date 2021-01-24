@@ -1,20 +1,23 @@
-# Unity - Undo Redo System #
+[![Build Status](https://travis-ci.com/jcs090218/Unity_UndoRedoSystem.svg?branch=master)](https://travis-ci.com/jcs090218/Unity_UndoRedoSystem)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
-Undo Redo system implementation in Unity uGUI system. <br/><br/>
+# Unity - Undo Redo System
 
+Undo Redo system implementation in Unity uGUI system.
 
-## Supported UI ##
+## Supported UI
+
 * Input Field
 * Dropdown
 * Toggle
 * Scrollbar
 * Slider
 
+## API
 
-## API ##
+### Undo Redo System
 
-### Undo Redo System ###
-```
+```cs
 JCS_UndoRedoSystem urs = this.GetComponent<JCS_UndoRedoSystem>();
 
 // Do undo once from this system if any.
@@ -59,8 +62,9 @@ urs.RecordPrevData();
 }
 ```
 
-### Undo Redo Component ###
-```
+### Undo Redo Component
+
+```cs
 JCS_UndoRedoComponent urc = this.GetComponent<JCS_UndoRedoComponent>();
 
 // Do one undo to this component.
@@ -97,9 +101,10 @@ urc.RecordPrevData();
 }
 ```
 
-## Screenshot ##
+## Screenshot
+
 <img src="./screenshot/undo_redo_demo.gif"/>
 
+## 3rd Party Source
 
-## 3rd Party Source ##
 * JCSUnity : https://github.com/jcs090218/JCSUnity by <a href="https://github.com/jcs090218">Jen-Chieh Shen</a>
