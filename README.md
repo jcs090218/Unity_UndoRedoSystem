@@ -1,8 +1,11 @@
-[![Build Status](https://travis-ci.com/jcs090218/Unity_UndoRedoSystem.svg?branch=master)](https://travis-ci.com/jcs090218/Unity_UndoRedoSystem)
-[![Unity Engine](https://img.shields.io/badge/unity-2018.2+-black.svg?style=flat&logo=unity&cacheSeconds=2592000)](https://unity3d.com/get-unity/download/archive)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+[![Unity Engine](https://img.shields.io/badge/unity-2018.2+-black.svg?style=flat&logo=unity&cacheSeconds=2592000)](https://unity3d.com/get-unity/download/archive)
 
 # Unity - Undo Redo System
+
+[![Build Status](https://travis-ci.com/jcs090218/Unity_UndoRedoSystem.svg?branch=master)](https://travis-ci.com/jcs090218/Unity_UndoRedoSystem)
+
+<img src="./screenshot/undo_redo_demo.gif"/>
 
 Undo Redo system implementation in Unity uGUI system.
 
@@ -102,10 +105,6 @@ urc.RecordPrevData();
 }
 ```
 
-## Screenshot
+## 📌 Dependencies
 
-<img src="./screenshot/undo_redo_demo.gif"/>
-
-## 3rd Party Source
-
-* JCSUnity : https://github.com/jcs090218/JCSUnity by <a href="https://github.com/jcs090218">Jen-Chieh Shen</a>
+* [JCSUnity](https://github.com/jcs090218/JCSUnity) by [Jen-Chieh Shen](https://github.com/jcs090218)
