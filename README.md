@@ -1,7 +1,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![Unity Engine](https://img.shields.io/badge/unity-2018.2+-black.svg?style=flat&logo=unity)](https://unity3d.com/get-unity/download/archive)
 
-# Unity - Undo Redo System
+# Undo Redo System
 
 [![Build Status](https://travis-ci.com/jcs090218/Unity_UndoRedoSystem.svg?branch=master)](https://travis-ci.com/jcs090218/Unity_UndoRedoSystem)
 
